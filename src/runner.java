@@ -8,6 +8,8 @@ public class runner {
     public static HashMap<Character, Boolean> variableValues = new HashMap<>(26);
     public static void main(String[] args) throws Exception {
         parser p = new parser(new lexer());
+        System.out.println("Please Type in a boolean Expression to be evaluated. Entering  '/' will close the program.");
+        System.out.println();
         p.parse();
         runForever(p);
     }
@@ -15,6 +17,9 @@ public class runner {
     public static void runForever(parser p) throws Exception {
         p.lexer.clearScannerVals();
         p.lexer.next();
+        //if (p.lexer.g)
+        System.out.println("Please Type in a boolean Expression to be evaluated. Entering  '/' will close the program.");
+        System.out.println();
         p.parse();
         runForever(p);
     }
@@ -64,28 +69,40 @@ class lexer{
                 switch (yytext) {
                     case '\n':
                         yytext = token = END;
+                        break;
                     case ' ':
                         next();
+                        break;
                     case '(':
                         token = yytext;
+                        break;
                     case ')':
                         token = yytext;
+                        break;
                     case '^':
                         token = yytext;
+                        break;
                     case '|':
                         token = yytext;
+                        break;
                     case '&':
                         token = yytext;
+                        break;
                     case '?':
                         token = yytext;
+                        break;
                     case '=':
                         token = yytext;
+                        break;
                     case '~':
                         token = yytext;
+                        break;
                     case '0':
                         token = yytext;
+                        break;
                     case '1':
                         token = yytext;
+                        break;
                     case '/':
                         System.exit(0);
                 }
